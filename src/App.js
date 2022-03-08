@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import { MuiThemeProvider} from '@material-ui/core/styles';
 import TextField from '@mui/material/TextField';
-import RaisedButton from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Polarity from "./components/Polarity.js";
 
@@ -49,7 +49,7 @@ class App extends Component {
                         <h2>Sentiment Analyser</h2>
                         <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
                                    hintText="Type your sentence."/>
-                        <RaisedButton  label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
+                        <Button  variant="contained" label="Send" style={style} onClick={this.analyzeSentence.bind(this)}>Send</Button>
                         {polarityComponent}
                     </Paper>
                 </div>
