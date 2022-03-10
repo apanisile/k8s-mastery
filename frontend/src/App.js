@@ -17,6 +17,7 @@ class App extends Component {
             sentence: '',
             polarity: undefined
         };
+        this.handleChange = this.handleChange.bind(this);
     };
 
     analyzeSentence() {
@@ -25,7 +26,7 @@ class App extends Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({sentence: this.textField.getValue()})
+            body: JSON.stringify({sentence: this.state.sentence})
         })
             .then(response => response.json())
             .then(data => this.setState(data));
@@ -47,8 +48,8 @@ class App extends Component {
                 <div className="centerize">
                     <Paper zDepth={1} className="content">
                         <h2>Sentiment Analyser</h2>
-                        <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
-                                   hintText="Type your sentence."
+                        <TextField onChange={this.handleChange} value={this.state.sentence} onKeyUp={this.onEnterPress.bind(this)}
+                                   placeholder="Type your sentence."
                                    variant="outlined"/>
                         <Button  variant="contained" label="Send" style={style} onClick={this.analyzeSentence.bind(this)}>Send</Button>
                         {polarityComponent}
@@ -56,6 +57,9 @@ class App extends Component {
                 </div>
             </MuiThemeProvider>
         );
+    }
+    handleChange(event) {
+        this.setState({sentence: event.target.value});
     }
 }
 
