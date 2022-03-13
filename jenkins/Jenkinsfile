@@ -1,9 +1,11 @@
 pipeline {
+     environment {
+        registryCredential = 'dockerHub'
+        imagename = 'apanisile/k8s-mastery'
+        dockerImage = ''
+    }
     agent {
-        docker {
-            image 'node:latest' 
-            args '-p 3000:3000' 
-        }
+        any
     }
     stages {
         stage('Build') { 
