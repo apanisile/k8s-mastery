@@ -4,7 +4,7 @@ pipeline {
         imagename = 'apanisile/k8s-mastery'
         dockerImage = ''
     }
-    agent dockerfile
+    agent any
     stages {
         stage('Build') { 
             steps {
