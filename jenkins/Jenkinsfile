@@ -6,12 +6,13 @@ pipeline {
     }
     agent any
     stages {
-        stage('Build') { 
+        stage('Build React Frontend') { 
             steps {
-                sh 'cd frontend && npm install && npm start' 
+                sh 'cd frontend && npm install' 
+                sh './jenkins/scripts/test.sh'
             }
         }
-         stage('Test') { 
+         stage('Build ') { 
             steps {
                 sh 'npm test' 
             }
