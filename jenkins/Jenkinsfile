@@ -6,15 +6,12 @@ pipeline {
     }
     agent any
     stages {
-        stage('Build React Frontend') { 
+        stage('Build & Test React Frontend') { 
             steps {
-                sh 'cd frontend && npm install' 
-            }
-        }
-         stage('Test') { 
-            steps {
+                sh 'cd frontend && npm install'
                 sh 'npm test' 
             }
         }
+         
     }
 }
