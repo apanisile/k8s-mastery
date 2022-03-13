@@ -9,11 +9,9 @@ pipeline {
         stage('Build React Frontend') { 
             steps {
                 sh 'cd frontend && npm install' 
-                sh 'chmod +x -R ${env.WORKSPACE}'
-                sh 'sh ./jenkins/scripts/test.sh'
             }
         }
-         stage('Build ') { 
+         stage('Test') { 
             steps {
                 sh 'npm test' 
             }
