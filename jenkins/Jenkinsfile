@@ -9,7 +9,12 @@ pipeline {
         stage('Build & Test React Frontend') { 
             steps {
                 sh 'cd frontend && npm install'
-                sh 'npm test' 
+            }
+        }
+        stage('Build & Test Webapp') { 
+            steps {
+                sh 'cd webapp && mvn clean package'
+                
             }
         }
          
